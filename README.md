@@ -18,12 +18,6 @@ Usage:
 Downloading HUGE amounts of comments takes a while -- we're being polite to the API servers.
 
 
-## Recommended Accounts to Start With:
-
-*   patio11
-*   tptacek
-
-
 ## License
 As with patio11's original script, this is hereby released into the public domain.
 
