@@ -1,0 +1,13 @@
+# BUG -- comment order is reversed (reflect in title? Or just reverse the array.)
+# TODO -- for very large comment sets, we should probably limit PDF size and chunk the data into several files
+
+
+
+### Notes:
+# http://prawnpdf.org/manual.pdf
+
+# should we just use wickedPDF?
+#   - build a massive HTML string from every n responses, and then write to PDF
+#   - that might save us the formatting/html headache with prawn
+#   - https://github.com/mileszs/wicked_pdf
+

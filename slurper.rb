@@ -5,14 +5,6 @@ require 'prawn'
 require 'date'
 require 'cgi'
 
-### Notes:
-# http://prawnpdf.org/manual.pdf
-# should we just use wickedPDF?
-#   - build a massive HTML string from every n responses, and then write to PDF
-#   - that might save us the formatting/html headache with prawn
-#   - https://github.com/mileszs/wicked_pdf
-# BUG -- comment order is reversed (reflect in title?)
-# TODO -- for very large comment sets, we should probably limit PDF size and chunk the data into several files
 
 def hash_to_comment(h)
     if h['text']
@@ -48,20 +40,20 @@ puts comment_ids.inspect
  
 to_fetch = MAX_TO_FETCH ? MAX_TO_FETCH.to_i : comment_ids.size
 to_fetch = [to_fetch, comment_ids.size].min
- 
+
 sample_ids = comment_ids[0..(to_fetch - 1)]
- 
+
 count = 0
- 
+
 increment = (sample_ids.size / 1000.0 + 0.5).to_i
 increment = 1 if increment < 1
- 
+
 
 Prawn::Document.generate("comments/#{USERNAME}.pdf") do
     font("Helvetica")
     default_leading 5
 
-    # title
+    # title page
     move_down 90
     font_size(45) { text "The Book of #{USERNAME}", :align => :center }
     move_down 120
@@ -70,7 +62,6 @@ Prawn::Document.generate("comments/#{USERNAME}.pdf") do
 
     # comment-writing loop
     sample_ids.map do |id|
-        # unless File.exist?("comments/#{USERNAME}/#{id}")
         comment_url_to_get = comment_url.sub("$ID", id.to_s)
         response = HTTParty.get(comment_url_to_get).parsed_response #rescue nil
         # sleep 0.2
