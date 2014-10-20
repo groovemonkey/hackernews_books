@@ -1,6 +1,7 @@
 # BUG -- comment order is reversed (reflect in title? Or just reverse the array.)
 # TODO -- for very large comment sets, we should probably limit PDF size and chunk the data into several files
 
+# there are html tags in the comment[:text] -- but <p> tags, for example, are often not closed. Perhaps a regex *would* (!!!) work to replace them (s/<p>/\n) -- even though a Ctulhu-raising event is possible as a direct consequence. See https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags for details.
 
 
 ### Notes:

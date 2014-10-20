@@ -1,11 +1,12 @@
 # Organize hackernews (ycombinator) comments into PDFs!
-(inspired by patio11's script -- https://gist.github.com/patio11/1550cad3a02edd175049)
+(inspired by patio11's script -- https://gist.github.com/patio11/1550cad3a02edd175049 )
 
 If you want to grab posts from a specific commenter on hackernews, just run this script.
 
 Required Gems:
-    *httparty
-    *prawn
+
+*   httparty
+*   prawn
 
 
 Usage:
@@ -18,8 +19,9 @@ Downloading HUGE amounts of comments takes a while -- we're being polite to the 
 
 
 ## Recommended Accounts to Start With:
-patio11
-tptacek
+
+*   patio11
+*   tptacek
 
 
 ## License
