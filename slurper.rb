@@ -6,18 +6,30 @@ require 'date'
 require 'cgi'
 
 
+def interpret_html_tags(s)
+    # paragraph tags
+    s = s.gsub(/<p>/, "\n\n")
+    s = s.gsub(/<\/p>/, "\n")
+
+    # mark italics
+    s = s.gsub(/<i>/, "*")
+    s = s.gsub(/<\/i>/, "*")
+end
+
+
+
 def hash_to_comment(h)
     if h['text']
         clean_text = CGI.unescape_html(h['text'])
         # not so pretty, sorry about the long line
         return {
             time: """#{Time.at(h['time']).to_datetime.strftime("%B %e, %Y")} (comment #{h['id']}#{h['parent'] ? (", in response to comment " + h['parent'].to_s) : ""})""",
-            text: clean_text
+            text: interpret_html_tags(clean_text)
         }
     else
         return {
-            time: "ERROR; text was:",
-            text: h['text']
+            time: "ERROR; comment hash was:",
+            text: h
         }
     end
 end
